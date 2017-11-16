@@ -1,3 +1,11 @@
+/**
+ * 
+ * @author Nicolas Patelli
+ * @version 2
+ * @date 16/11/2017
+ *
+ */
+
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -19,12 +27,24 @@ public class PadJoueur implements Pad{
 		
 	}
 	
+	/**
+	* 
+	* @return Crée un pad aux couleurs et dimensions spécifiées
+	* @todo Paramètres de couleur et de taille
+	*
+	*/
 	public void draw(Graphics g) {
 		g.setColor(Color.white);
 		g.fillRect(x, (int)y, 20, 80);
 		
 	}
-
+	
+	/**
+	* 
+	* @return Déplace le pad vers le haut ou le bas
+	* @todo Paramètres de vitesse
+	*
+	*/
 	public void move() {
 		if(upAccel) {
 			yVel -=2;
