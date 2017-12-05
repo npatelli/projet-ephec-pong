@@ -1,3 +1,4 @@
+package PONGv1;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -62,7 +63,7 @@ public class Balle {
 			}
 		}
 		else if(x >= 650){
-			if (y >= p1.getY() && y <= p1.getY() + 80) {
+			if (y >= p2.getY() && y <= p2.getY() + 80) {
 				xVel = -xVel;
 			}
 		}

@@ -1,3 +1,5 @@
+package PONGv1;
+
 /**
  * 
  * @author Gauthier Adelin
@@ -13,10 +15,10 @@ public class PadIA implements Pad {
 	double y, yVel;
 	boolean upAccel, downAccel;
 	int player, x;
-	Ball b1;
+	Balle b1;
 	
 	final double GRAVITY = 0.95;
-	public PadIA(int player, Ball b) {
+	public PadIA(int player, Balle b) {
 		upAccel = false;
 		b1 = b;
 		downAccel = false;

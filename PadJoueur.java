@@ -1,3 +1,4 @@
+package PONGv1;
 /**
  * 
  * @author Nicolas Patelli
@@ -29,8 +30,8 @@ public class PadJoueur implements Pad{
 	
 	/**
 	* 
-	* @return Crée un pad aux couleurs et dimensions spécifiées
-	* @todo Paramètres de couleur et de taille
+	* @return Cree un pad aux couleurs et dimensions specifiees
+	* @todo Parametres de couleur et de taille
 	*
 	*/
 	public void draw(Graphics g) {
@@ -41,8 +42,8 @@ public class PadJoueur implements Pad{
 	
 	/**
 	* 
-	* @return Déplace le pad vers le haut ou le bas
-	* @todo Paramètres de vitesse
+	* @return Deplace le pad vers le haut ou le bas
+	* @todo Parametres de vitesse
 	*
 	*/
 	public void move() {
