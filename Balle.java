@@ -4,7 +4,7 @@ import java.awt.Graphics;
 /**
  * 
  * @author Adelin Gauthier
- * @version 3.0
+ * @version 3.1
  *
  */
 
@@ -55,7 +55,7 @@ public class Balle {
 	 * @param p1 Pad 1
 	 * @param p2 Pad 2
 	 */
-	public void checkPaddleCollision(Paddle p1, Paddle p2) {
+	public void checkPaddleCollision(Pad p1, Pad p2) {
 		if (x <= 50) {
 			if (y >= p1.getY() && y <= p1.getY() + 80) {
 				xVel = -xVel;
@@ -65,6 +65,7 @@ public class Balle {
 			if (y >= p1.getY() && y <= p1.getY() + 80) {
 				xVel = -xVel;
 			}
+		}
 	}
 	
 		/**
