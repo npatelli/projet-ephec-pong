@@ -31,7 +31,7 @@ public class Balle {
 	 * 
 	 * @return un chiffre aléatoire qui gèrera de la direction de départ de la balle
 	 */
-	public int getRandomDirection() {
+	public static int getRandomDirection() {
 		int rand = (int)(Math.random() * 2);
 		if (rand == 1) {
 			return 1;
@@ -58,21 +58,35 @@ public class Balle {
 	 */
 	public void checkPaddleCollision(Pad p1, Pad p2) {
 		if (x <= 50) {
-			if (y >= p1.getY() && y <= p1.getY() + 80) {
+			if (y > p1.getY()+60 && y <= p1.getY() + 80) {
+				xVel = -xVel;
+				yVel = Math.abs(yVel);
+				
+			} else if (y >= p1.getY() && y < p1.getY() + 20) {
+				xVel = -xVel;
+				yVel = -Math.abs(yVel);
+			} else if (y >= p1.getY()+20 && y <= p1.getY() + 60) {
 				xVel = -xVel;
 			}
 		}
 		else if(x >= 650){
-			if (y >= p2.getY() && y <= p2.getY() + 80) {
+			if (y > p2.getY()+60 && y <= p2.getY() + 80) {
+				xVel = -xVel;
+				yVel = Math.abs(yVel);
+				
+			} else if (y >= p2.getY() && y < p2.getY() + 20) {
+				xVel = -xVel;
+				yVel = -Math.abs(yVel);
+			} else if (y >= p2.getY()+20 && y <= p2.getY() + 60) {
 				xVel = -xVel;
 			}
 		}
 	}
 	
-		/**
-		 * Mouvement de la balle
-		 * Rebondit sur les bords horizontaux
-		 */
+	/**
+	* Mouvement de la balle
+	* Rebondit sur les bords horizontaux
+	*/
 	public void move() {
 		x += xVel;
 		y += yVel;

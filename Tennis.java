@@ -1,3 +1,15 @@
+/**
+ * 
+ * @author Nicolas Patelli
+ * @version 2
+ * @date 06/12/2017
+ *
+ */
+
+
+
+
+
 package PONGv1;
 import java.applet.Applet;
 import java.awt.Color;
@@ -16,7 +28,12 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	Graphics gfx;
 	Image img;
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
+	
+	/**
+	 * 
+	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 */
 	public void init() {
 		this.resize(WIDTH, HEIGHT);
 		partieLancee = false;
@@ -31,14 +48,23 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		thread.start();
 	}
 	
+	/**
+	 * 
+	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 */
 	public void paint(Graphics g) {
 		gfx.setColor(Color.BLACK);
 		gfx.fillRect(0,  0,  WIDTH,  HEIGHT);
 		
-		if(b1.getX() <-10 || b1.getX() > 710) {
+		if(b1.getX() <40) {
 			gfx.setColor(Color.white);
-			gfx.drawString("Fin de partie !", 320, 250);
-		} else {
+			gfx.drawString("Fin de partie ! Vous avez perdu !", 270, 250);
+		}
+		else if (b1.getX() > 660) {
+			gfx.setColor(Color.white);
+			gfx.drawString("Fin de partie ! Vous avez gagné !", 270, 250);
+		}
+		else {
 			p1.draw(gfx);
 			b1.draw(gfx);
 			p2.draw(gfx);
@@ -48,15 +74,24 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			gfx.setColor(Color.white);
 			gfx.drawString("- Pong -", 327, 100);
 			gfx.drawString("Entrée pour commencer ...", 280, 130);
+			
 
 		}
 		g.drawImage(img, 0, 0, this);
 	}
 	
+	/**
+	 * 
+	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 */
 	public void update(Graphics g) {
 		paint(g);
 	}
 	
+	/**
+	 * 
+	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 */
 	public void run() {
 		for(;;) {
 			if(partieLancee) {
@@ -75,7 +110,11 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			}
 		}
 	}
-
+	
+	/**
+	 * 
+	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 */
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
 			p1.setUpAccel(true);
@@ -87,7 +126,11 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			partieLancee = true;
 		}
 	}
-
+	
+	/**
+	 * 
+	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 */
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
 			p1.setUpAccel(false);
@@ -96,7 +139,11 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			p1.setDownAccel(false);
 		}
 	}
-
+	
+	/**
+	 * 
+	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 */
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		

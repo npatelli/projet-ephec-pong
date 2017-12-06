@@ -14,7 +14,7 @@ public class PadJoueur implements Pad{
 	double y, yVel;
 	boolean upAccel, downAccel;
 	int player, x;
-	final double GRAVITY = 0.95;
+	final double GRAVITY = 0.5;
 	public PadJoueur(int player) {
 		upAccel = false;
 		downAccel = false;

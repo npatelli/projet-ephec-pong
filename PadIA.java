@@ -51,7 +51,23 @@ public class PadIA implements Pad {
 	*
 	*/
 	public void move() {
-		y = b1.getY() - 40;
+		//y = b1.getY() - Balle.getRandomDirection();
+		if(b1.getY() < y+40) {
+			yVel -=2;
+		}
+		else if(b1.getY() > y+40){
+			yVel +=2;
+		}
+		else if(!upAccel && !downAccel){
+			yVel *= GRAVITY;
+		}
+		
+		if(yVel>=3)
+			yVel=3;
+		else if(yVel<=-3)
+			yVel=-3;
+		
+		y += yVel;
 		
 		if(y<0)
 			y=0;

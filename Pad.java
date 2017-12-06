@@ -2,7 +2,7 @@ package PONGv1;
 /**
  * 
  * @author Nicolas Patelli
- * @version 2
+ * @version 1
  * @date 16/11/2017
  *
  */
