@@ -1,7 +1,7 @@
 /**
  * 
  * @author Nicolas Patelli
- * @version 2
+ * @version 3
  * @date 06/12/2017
  *
  */
@@ -22,6 +22,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	PadIA p2;
 	Balle b1;
 	boolean partieLancee;
+	boolean gameOver = false;
 	Graphics gfx;
 	Image img;
 	
@@ -29,12 +30,13 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	
 	/**
 	 * 
-	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 * @return un chiffre alÃ©atoire qui gÃ¨rera de la vitesse de dÃ©part de la balle
 	 */
 	public void init() {
 		this.resize(WIDTH, HEIGHT);
 		partieLancee = false;
-		this.addKeyListener(this);
+		
+		//this.addKeyListener(this);
 		p1 = new PadJoueur(1);
 		b1 = new Balle();
 		p2 = new PadIA(2, b1);
@@ -51,8 +53,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 				   partieLancee = true;
 			   }      
 		});
-		this.requestFocus();
-		this.addKeyListener(this);
+		beep.addKeyListener(this);
 		
 		Button theme = new Button ("Theme");
 		this.add(theme);
@@ -69,11 +70,15 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 				   System.exit(0);  
 			   }      
 		});
+		
+		
+		
+		
 	}
 	
 	/**
 	 * 
-	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 * @return un chiffre alÃ©atoire qui gÃ¨rera de la vitesse de dÃ©part de la balle
 	 */
 	public void paint(Graphics g) {
 		gfx.setColor(Color.BLACK);
@@ -82,10 +87,16 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		if(b1.getX() <40) {
 			gfx.setColor(Color.white);
 			gfx.drawString("Fin de partie ! Vous avez perdu !", 270, 250);
+			partieLancee =  false;
+			gameOver =  true;
+			init();
 		}
 		else if (b1.getX() > 660) {
 			gfx.setColor(Color.white);
-			gfx.drawString("Fin de partie ! Vous avez gagné !", 270, 250);
+			gfx.drawString("Fin de partie ! Vous avez gagnÃ© !", 270, 250);
+			partieLancee =  false;
+			gameOver =  true;
+			init();
 		}
 		else {
 			p1.draw(gfx);
@@ -93,19 +104,18 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			p2.draw(gfx);
 		}
 		
-		if(!partieLancee) {
+		if(!partieLancee && !gameOver) {
 			gfx.setColor(Color.white);
 			gfx.drawString("- Pong -", 327, 100);
-			gfx.drawString("Entrée pour commencer ...", 280, 130);
-			
-
+			gfx.drawString("EntrÃ©e pour commencer ...", 280, 130);
 		}
+		
 		g.drawImage(img, 0, 0, this);
 	}
 	
 	/**
 	 * 
-	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 * @return un chiffre alÃ©atoire qui gÃ¨rera de la vitesse de dÃ©part de la balle
 	 */
 	public void update(Graphics g) {
 		paint(g);
@@ -113,11 +123,12 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	
 	/**
 	 * 
-	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 * @return un chiffre alÃ©atoire qui gÃ¨rera de la vitesse de dÃ©part de la balle
 	 */
 	public void run() {
 		for(;;) {
 			if(partieLancee) {
+			
 				p1.move();
 				p2.move();
 				b1.move();
@@ -136,7 +147,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	
 	/**
 	 * 
-	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 * @return un chiffre alÃ©atoire qui gÃ¨rera de la vitesse de dÃ©part de la balle
 	 */
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
@@ -152,7 +163,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	
 	/**
 	 * 
-	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 * @return un chiffre alÃ©atoire qui gÃ¨rera de la vitesse de dÃ©part de la balle
 	 */
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
@@ -165,7 +176,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	
 	/**
 	 * 
-	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 * @return un chiffre alÃ©atoire qui gÃ¨rera de la vitesse de dÃ©part de la balle
 	 */
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
