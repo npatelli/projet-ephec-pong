@@ -6,17 +6,14 @@
  *
  */
 
-
-
-
-
 package PONGv1;
 import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.*;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class Tennis extends Applet implements Runnable, KeyListener {
 	final int WIDTH = 700, HEIGHT = 500;
@@ -46,6 +43,32 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		
 		thread = new Thread(this);
 		thread.start();
+		
+		Button beep = new Button ("start");
+		this.add(beep);
+		beep.addActionListener(new ActionListener(){ 
+			   public void actionPerformed(ActionEvent e) { 
+				   partieLancee = true;
+			   }      
+		});
+		this.requestFocus();
+		this.addKeyListener(this);
+		
+		Button theme = new Button ("Theme");
+		this.add(theme);
+		theme.addActionListener(new ActionListener(){ 
+			   public void actionPerformed(ActionEvent e) { 
+				   System.exit(0);  
+			   }      
+		});
+		
+		Button exit = new Button ("Exit");
+		this.add(exit);
+		exit.addActionListener(new ActionListener(){ 
+			   public void actionPerformed(ActionEvent e) { 
+				   System.exit(0);  
+			   }      
+		});
 	}
 	
 	/**
