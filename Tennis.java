@@ -1,7 +1,7 @@
 /**
  * 
  * @author Nicolas Patelli
- * @version 3
+ * @version 2
  * @date 06/12/2017
  *
  */
@@ -16,7 +16,10 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 public class Tennis extends Applet implements Runnable, KeyListener {
+	//PARAMETRES
 	final int WIDTH = 700, HEIGHT = 500;
+	//final 
+	//VARIABLES
 	Thread thread;
 	PadJoueur p1;
 	PadIA p2;
@@ -46,14 +49,14 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		thread = new Thread(this);
 		thread.start();
 		
-		Button beep = new Button ("start");
-		this.add(beep);
-		beep.addActionListener(new ActionListener(){ 
+		Button start = new Button ("start");
+		this.add(start);
+		start.addActionListener(new ActionListener(){ 
 			   public void actionPerformed(ActionEvent e) { 
 				   partieLancee = true;
 			   }      
 		});
-		beep.addKeyListener(this);
+		start.addKeyListener(this);
 		
 		Button theme = new Button ("Theme");
 		this.add(theme);
@@ -73,6 +76,17 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		
 		
 		
+		Button restart = new Button ("restart");
+		this.add(restart);
+		restart.addActionListener(new ActionListener(){ 
+			   public void actionPerformed(ActionEvent e) { 
+				   p1 = new PadJoueur(1);
+					b1 = new Balle();
+					p2 = new PadIA(2, b1);
+			   }      
+		});
+		restart.addKeyListener(this);
+		
 		
 	}
 	
@@ -89,14 +103,14 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			gfx.drawString("Fin de partie ! Vous avez perdu !", 270, 250);
 			partieLancee =  false;
 			gameOver =  true;
-			init();
+			
 		}
 		else if (b1.getX() > 660) {
 			gfx.setColor(Color.white);
 			gfx.drawString("Fin de partie ! Vous avez gagné !", 270, 250);
 			partieLancee =  false;
 			gameOver =  true;
-			init();
+			
 		}
 		else {
 			p1.draw(gfx);
