@@ -15,31 +15,12 @@ public class Balle {
 	public Balle() {
 		x = 350;
 		y = 250;
-		xVel = getRandomSpeed() * getRandomDirection();
-		yVel = getRandomSpeed() * getRandomDirection();
+		xVel = 31;
+		yVel = 31;
+		
 	}
 	
-	/**
-	 * 
-	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
-	 */
-	public double getRandomSpeed() {
-		return (Math.random() * 3 + 2 );
-	}
-	
-	/**
-	 * 
-	 * @return un chiffre aléatoire qui gèrera de la direction de départ de la balle
-	 */
-	public static int getRandomDirection() {
-		int rand = (int)(Math.random() * 2);
-		if (rand == 1) {
-			return 1;
-		}
-		else {
-			return -1;
-		}
-	}
+
 	
 	/**
 	 * Dessine la balle (couleur, taille)
@@ -90,7 +71,8 @@ public class Balle {
 	public void move() {
 		x += xVel;
 		y += yVel;
-		
+		System.out.println("Vélocité : "+xVel + " " + yVel);
+		System.out.println("Position : "+x + " " + y);
 		if (y < 10) {
 			yVel = -yVel;
 		}
