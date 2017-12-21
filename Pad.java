@@ -1,4 +1,4 @@
-package PONGv1;
+package PONGv2;
 /**
  * 
  * @author Nicolas Patelli

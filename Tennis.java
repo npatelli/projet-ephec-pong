@@ -6,7 +6,7 @@
  *
  */
 
-package PONGv1;
+package PONGv2;
 import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
@@ -33,7 +33,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	boolean gameOver = false;
 	Graphics gfx;
 	Image img;
-	int scoreActuel = 0;
+	public static int scoreActuel = 0;
 	int meilleurScore =0;
 	
 	private static final long serialVersionUID = 1L; 
@@ -114,6 +114,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			   public void actionPerformed(ActionEvent e) { 
 				   if(partieGagnee) {
 					   scoreActuel++;
+					   System.out.println(scoreActuel);
 				   }
 				   
 				   p1 = new PadJoueur(1);
@@ -123,7 +124,6 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			   }      
 		});
 		restart.addKeyListener(this);
-		
 		
 	}
 	

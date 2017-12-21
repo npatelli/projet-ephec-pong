@@ -15,7 +15,7 @@ public class Balle {
 	public Balle() {
 		x = 350;
 		y = 250;
-		xVel = 3*getRandomDirection();
+		xVel = 4*getRandomDirection();
 		yVel = 2*getRandomDirection();
 	}
 	
@@ -80,18 +80,7 @@ public class Balle {
 	public void move() {
 		x += xVel;
 		y += yVel;
-		   if (Tennis.scoreActuel > 3 && Tennis.scoreActuel < 5) {
-			   Balle.xVel = 5;
-			   Balle.yVel = 2;
-		   }
-		   else if (Tennis.scoreActuel > 5 && Tennis.scoreActuel < 10) {
-			   Balle.xVel = 7;
-			   Balle.yVel = 4;
-		   }
-		   else if (Tennis.scoreActuel > 10) {
-			   Balle.xVel = 10;
-			   Balle.yVel = 6;
-		   }
+		   
 		//System.out.println("Vélocité : "+xVel + " " + yVel);
 		//System.out.println("Position : "+x + " " + y);
 		if (y < 10) {
