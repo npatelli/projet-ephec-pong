@@ -1,4 +1,4 @@
-package PONGv1;
+package PONGv2;
 //import java.awt.Color;
 import java.awt.Graphics;
 
@@ -10,15 +10,16 @@ import java.awt.Graphics;
  */
 
 public class Balle {
-	double xVel, yVel, x, y;
+	public static double xVel, yVel, x, y;
 	
 	public Balle() {
 		x = 350;
 		y = 250;
-		xVel = 31;
-		yVel = 31;
-		
+		xVel = 3;
+		yVel = 2;
 	}
+	
+
 	
 
 	
@@ -71,6 +72,18 @@ public class Balle {
 	public void move() {
 		x += xVel;
 		y += yVel;
+		   if (Tennis.scoreActuel >= 3 && Tennis.scoreActuel < 5) {
+			   Balle.xVel = 5;
+			   Balle.yVel = 5;
+		   }
+		   else if (Tennis.scoreActuel >= 5 && Tennis.scoreActuel < 10) {
+			   Balle.xVel = 7;
+			   Balle.yVel = 7;
+		   }
+		   else if (Tennis.scoreActuel >= 10) {
+			   Balle.xVel = 10;
+			   Balle.yVel = 10;
+		   }
 		System.out.println("Vélocité : "+xVel + " " + yVel);
 		System.out.println("Position : "+x + " " + y);
 		if (y < 10) {
