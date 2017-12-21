@@ -1,4 +1,4 @@
-package PONGv1;
+package PONGv2;
 
 /**
  * 
@@ -16,8 +16,9 @@ public class PadIA implements Pad {
 	boolean upAccel, downAccel;
 	int player, x;
 	Balle b1;
+	double difficulte = 1.17+Math.random()*0.1;
 	
-	final double GRAVITY = 0.95;
+	final double GRAVITY = 0.01;
 	public PadIA(int player, Balle b) {
 		upAccel = false;
 		b1 = b;
@@ -61,11 +62,12 @@ public class PadIA implements Pad {
 			yVel *= GRAVITY;
 		}
 		//DIFFICULTE
-		if(yVel>=1)
-			yVel=1;
-		else if(yVel<=-1)
-			yVel=-1;
-		
+		difficulte = 1.187+Math.random()*0.1;
+		if(yVel>=Math.abs(Balle.yVel)/difficulte)
+			yVel=Math.abs(Balle.yVel)/difficulte;
+		else if(yVel<=-Math.abs(Balle.yVel)/difficulte)
+			yVel=-Math.abs(Balle.yVel)/difficulte;
+		System.out.println(difficulte);
 		y += yVel;
 		
 		if(y<0)
