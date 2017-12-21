@@ -22,6 +22,8 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	//VARIABLES
 	int  colorCpt=0;
 	public Color themeTerrain = Color.black;
+	public static Color themePad = Color.white;
+	public static Color themeBalle = Color.white;
 	boolean partieGagnee;
 	Thread thread;
 	PadJoueur p1;
@@ -35,6 +37,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	int meilleurScore =0;
 	
 	private static final long serialVersionUID = 1L; 
+
 	
 	/**
 	 * 
@@ -71,18 +74,26 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 				   if (colorCpt>5)
 					   colorCpt=0;
 				   
-				   if(colorCpt==0) {
+				   if(colorCpt==0) { //DEFAULT
 					   themeTerrain = Color.black;
-				   } else  if (colorCpt==1) {
-					   themeTerrain =
-				   } else  if (colorCpt==2) {
-					   themeTerrain =
-				   } else  if (colorCpt==3) {
-					   themeTerrain =
-				   } else  if (colorCpt==4) {
-					   themeTerrain =
-				   } else  if (colorCpt==5) {
-					   themeTerrain =
+					   themePad = Color.white;
+					   themeBalle = Color.white;
+				   } else  if (colorCpt==1) { //TERRE BATTUE
+					   themeTerrain = new Color(230,74,25);
+					   themePad = Color.white;
+					   themeBalle = new Color(251,192,45); 
+				   } else  if (colorCpt==2) { // GAZON
+					   themeTerrain = new Color(27,94,32);
+					   themePad = Color.white;
+					   themeBalle = new Color(251,192,45); 
+				   } else  if (colorCpt==3) { //BLEU
+					   themeTerrain = new Color(2,119,189);
+					   themePad = Color.white;
+					   themeBalle = Color.white;
+				   } else  if (colorCpt==5) { //INVERT
+					   themeTerrain = Color.white;
+					   themePad = Color.black;
+					   themeBalle = Color.black;
 				   }
 			   }      
 		});

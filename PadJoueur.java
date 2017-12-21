@@ -7,7 +7,7 @@ package PONGv1;
  *
  */
 
-import java.awt.Color;
+//import java.awt.Color;
 import java.awt.Graphics;
 
 public class PadJoueur implements Pad{
@@ -35,7 +35,7 @@ public class PadJoueur implements Pad{
 	*
 	*/
 	public void draw(Graphics g) {
-		g.setColor(Color.white);
+		g.setColor(Tennis.themePad);
 		g.fillRect(x, (int)y, 20, 80);
 		
 	}

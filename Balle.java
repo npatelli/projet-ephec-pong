@@ -1,5 +1,5 @@
 package PONGv1;
-import java.awt.Color;
+//import java.awt.Color;
 import java.awt.Graphics;
 
 /**
@@ -27,7 +27,7 @@ public class Balle {
 	 * @param g La balle
 	 */
 	public void draw(Graphics g) {
-		g.setColor(Color.white);
+		g.setColor(Tennis.themeBalle);
 		g.fillOval((int)x-10, (int)y-10, 20, 20);
 	}
 	
