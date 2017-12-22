@@ -62,7 +62,7 @@ public class PadIA implements Pad {
 			yVel *= GRAVITY;
 		}
 		//DIFFICULTE
-		difficulte = 1.11+Math.random()*0.1;
+		difficulte = 2+Math.random()*0.1;
 		if(yVel>=Math.abs(Balle.yVel)/difficulte)
 			yVel=Math.abs(Balle.yVel)/difficulte;
 		else if(yVel<=-Math.abs(Balle.yVel)/difficulte)
