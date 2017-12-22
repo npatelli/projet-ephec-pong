@@ -1,4 +1,4 @@
-package PONGv2;
+package PONGv1;
 
 /**
  * 
@@ -36,7 +36,7 @@ public class PadIA implements Pad {
 	/**
 	* 
 	* @return Crée un pad aux couleurs et dimensions spécifiées
-	* @todo Paramètres de couleur et de taille
+	* s
 	*
 	*/
 	public void draw(Graphics g) {
@@ -48,7 +48,7 @@ public class PadIA implements Pad {
 	/**
 	* 
 	* @return Déplace le pad vers le haut ou le bas
-	* @todo Paramètres de vitesse
+	* 
 	*
 	*/
 	public void move() {
@@ -62,7 +62,7 @@ public class PadIA implements Pad {
 			yVel *= GRAVITY;
 		}
 		//DIFFICULTE
-		difficulte = 1.07+Math.random()*0.1;
+		difficulte = 1.11+Math.random()*0.1;
 		if(yVel>=Math.abs(Balle.yVel)/difficulte)
 			yVel=Math.abs(Balle.yVel)/difficulte;
 		else if(yVel<=-Math.abs(Balle.yVel)/difficulte)

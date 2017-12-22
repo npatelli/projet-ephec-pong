@@ -1,4 +1,4 @@
-package PONGv2;
+package PONGv1;
 //import java.awt.Color;
 import java.awt.Graphics;
 
@@ -48,27 +48,47 @@ public class Balle {
 	 */
 	public void checkPaddleCollision(Pad p1, Pad p2) {
 		if (x <= 50) {
-			if (y > p1.getY()+60 && y <= p1.getY() + 80) {
+			if ((y >= p1.getY()-2 && y < p1.getY() + 10)) {
 				xVel = -xVel;
-				yVel = Math.abs(yVel);
-				
-			} else if (y >= p1.getY() && y < p1.getY() + 20) {
+				yVel = -Math.abs(yVel)-2;
+			}
+			else if (y >= p1.getY()+10 && y <= p1.getY() + 35) {
 				xVel = -xVel;
 				yVel = -Math.abs(yVel);
-			} else if (y >= p1.getY()+20 && y <= p1.getY() + 60) {
+			}
+			else if (y > p1.getY()+35 && y < p1.getY() + 45) {
+				xVel=-xVel+1;
+				yVel = 0;
+			}
+			else if (y >= p1.getY()+45 && y <= p1.getY() + 70) {
 				xVel = -xVel;
+				yVel = Math.abs(yVel);
+			}
+			else if (y > p1.getY()+70 && y <= p1.getY() + 82) {
+				xVel = -xVel;
+				yVel = Math.abs(yVel)+2;
 			}
 		}
 		else if(x >= 650){
-			if (y > p2.getY()+60 && y <= p2.getY() + 80) {
+			if ((y >= p2.getY()-2 && y < p2.getY() + 10)) {
 				xVel = -xVel;
-				yVel = Math.abs(yVel);
-				
-			} else if (y >= p2.getY() && y < p2.getY() + 20) {
+				yVel = -Math.abs(yVel)-2;
+			}
+			else if (y >= p2.getY()+10 && y <= p2.getY() + 35) {
 				xVel = -xVel;
 				yVel = -Math.abs(yVel);
-			} else if (y >= p2.getY()+20 && y <= p2.getY() + 60) {
+			}
+			else if (y > p2.getY()+35 && y < p2.getY() + 45) {
+				xVel=-xVel+1;
+				yVel = 0;
+			}
+			else if (y >= p2.getY()+45 && y <= p2.getY() + 70) {
 				xVel = -xVel;
+				yVel = Math.abs(yVel);
+			}
+			else if (y > p2.getY()+70 && y <= p2.getY() + 82) {
+				xVel = -xVel;
+				yVel = Math.abs(yVel)+2;
 			}
 		}
 	}
