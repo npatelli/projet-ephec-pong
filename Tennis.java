@@ -1,12 +1,12 @@
 /**
  * 
  * @author Nicolas Patelli
- * @version 2
- * @date 06/12/2017
+ * @version 4
+ * @date 22/12/2017
  *
  */
 
-package PONGv2;
+package PONGv1;
 import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
@@ -18,7 +18,6 @@ import java.awt.Image;
 public class Tennis extends Applet implements Runnable, KeyListener {
 	//PARAMETRES
 	final int WIDTH = 700, HEIGHT = 500;
-	//final 
 	//VARIABLES
 	int  colorCpt=0;
 	public Color themeTerrain = Color.black;
@@ -34,14 +33,14 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	Graphics gfx;
 	Image img;
 	public static int scoreActuel = 0;
-	int meilleurScore =0;
-	
+	public static int meilleurScore =0;
+	public static int scoreRestant = 0;
 	private static final long serialVersionUID = 1L; 
 
 	
 	/**
 	 * 
-	 * @return un chiffre aléatoire qui gèrera de la vitesse de départ de la balle
+	 * @return procédure de création de la partie
 	 */
 	public void init() {
 		this.resize(WIDTH, HEIGHT);
@@ -71,7 +70,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		theme.addActionListener(new ActionListener(){ 
 			   public void actionPerformed(ActionEvent e) { 
 				   colorCpt++;
-				   if (colorCpt>5)
+				   if (colorCpt>4)
 					   colorCpt=0;
 				   
 				   if(colorCpt==0) { //DEFAULT
@@ -90,7 +89,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 					   themeTerrain = new Color(2,119,189);
 					   themePad = Color.white;
 					   themeBalle = Color.white;
-				   } else  if (colorCpt==5) { //INVERT
+				   } else  if (colorCpt==4) { //INVERT
 					   themeTerrain = Color.white;
 					   themePad = Color.black;
 					   themeBalle = Color.black;
@@ -114,7 +113,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			   public void actionPerformed(ActionEvent e) { 
 				   if(partieGagnee) {
 					   scoreActuel++;
-					   System.out.println(scoreActuel);
+					   
 				   }
 				   
 				   p1 = new PadJoueur(1);
@@ -124,6 +123,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			   }      
 		});
 		restart.addKeyListener(this);
+		
 		
 	}
 	
@@ -136,21 +136,36 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		gfx.fillRect(0,  0,  WIDTH,  HEIGHT);
 		
 		if(b1.getX() <40) {
-			gfx.setColor(Color.white);
-			gfx.drawString("Fin de partie ! Vous avez perdu !", 270, 250);
-			scoreActuel = 0;
 			partieGagnee = false;
-			gfx.drawString("Score : "+ scoreActuel, 330, 270);
+			gfx.setColor(themePad);
+			gfx.drawString("Fin de partie ! Vous avez perdu !", 270, 250);
+			if (scoreActuel == meilleurScore) {
+				gfx.drawString("Record égalé !", 320, 290);
+			}
+			else if (scoreActuel > meilleurScore) {
+				meilleurScore = scoreActuel-1;
+				gfx.drawString("Nouveau record : "+ meilleurScore + " !", 295, 290);
+			} 
+			
+			
+			gfx.drawString("Meilleur score : "+ meilleurScore, 310, 270);
+			scoreActuel = 0;
 			partieLancee =  false;
 			gameOver =  true;
 			
 		}
 		else if (b1.getX() > 660) {
-			gfx.setColor(Color.white);
+			gfx.setColor(themePad);
 			gfx.drawString("Fin de partie ! Vous avez gagné !", 270, 250);
 			partieGagnee = true;
 			if(scoreActuel ==0) {
 				scoreActuel = 1;
+			}
+			if (scoreActuel > meilleurScore) {
+				//meilleurScore = scoreActuel;
+				gfx.drawString("Nouveau record : "+ scoreActuel + " !", 295, 290);
+			} else if (scoreActuel == meilleurScore) {
+				gfx.drawString("Record égalé : "+ scoreActuel + " !", 305, 290);
 			}
 			gfx.drawString("Score : "+ scoreActuel, 330, 270);
 			partieLancee =  false;
@@ -164,7 +179,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		}
 		
 		if(!partieLancee && !gameOver) {
-			gfx.setColor(Color.white);
+			gfx.setColor(themePad);
 			gfx.drawString("- Pong -", 327, 100);
 			gfx.drawString("Entrée pour commencer ...", 280, 130);
 		}
